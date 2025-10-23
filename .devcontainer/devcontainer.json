@@ -1,0 +1,32 @@
+{
+    "name": "Python Dev Container",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspaces",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "ms-python.flake8",
+          "ms-python.black-formatter",
+          "ms-vscode.vscode-json",
+          "redhat.vscode-yaml"
+        ],
+        "settings": {
+          "python.defaultInterpreterPath": "/usr/bin/python3",
+          "black-formatter.args": ["--line-length=88"],
+          "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true,
+            "editor.formatOnType": false
+          },
+          "files.exclude": {
+            "**/__pycache__": true,
+            "**/.pytest_cache": true
+          }
+        }
+      }
+    },
+    "postCreateCommand": "python3 --version",
+    "remoteUser": "vscode"
+  }

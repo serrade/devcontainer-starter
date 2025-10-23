@@ -1,0 +1,53 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    platform: linux/amd64
+    volumes:
+      - ..:/workspaces:cached
+    command: sleep infinity
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - dev-network
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  postgres:
+    image: postgres:17
+    platform: linux/amd64
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dev-network
+
+  redis:
+    image: redis:8.2.2
+    platform: linux/amd64
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,11 @@
+# Database drivers
+psycopg2-binary
+redis
+
+# Web framework
+fastapi
+uvicorn
+
+# Database ORM
+sqlalchemy
+
