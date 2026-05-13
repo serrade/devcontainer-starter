@@ -7,19 +7,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
     && rm /tmp/apt-packages.txt
 
-RUN ln -s /usr/bin/python3 /usr/local/bin/python
-
-RUN rm -f /usr/lib/python*/EXTERNALLY-MANAGED
-
-# Copy requirements.txt if it exists and install dependencies
-COPY requirements.txt* /tmp/pip-tmp/
-RUN if [ -f /tmp/pip-tmp/requirements.txt ] && [ -s /tmp/pip-tmp/requirements.txt ]; then \
-        python3 -m pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt; \
-    fi \
-    && rm -rf /tmp/pip-tmp
-
-ENV PYTHONPATH=/workspaces
-ENV PYTHONUNBUFFERED=1
 ENV PATH="/usr/local/bin:${PATH}"
 
 RUN echo '# Custom prompt and aliases' >> /etc/bash.bashrc && \
