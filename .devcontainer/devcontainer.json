@@ -1,16 +1,41 @@
 {
-    "name": "Dev Container",
+    "name": "Terraform Dev Container",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
     "workspaceFolder": "/workspaces",
+    "features": {
+      "ghcr.io/devcontainers/features/terraform:1": {
+        "version": "latest",
+        "tflint": "latest",
+        "terragrunt": "none",
+        "installTerraformDocs": true
+      }
+    },
     "customizations": {
       "vscode": {
         "extensions": [
           "ms-vscode.vscode-json",
-          "redhat.vscode-yaml"
-        ]
+          "redhat.vscode-yaml",
+          "HashiCorp.terraform"
+        ],
+        "settings": {
+          "[terraform]": {
+            "editor.defaultFormatter": "HashiCorp.terraform",
+            "editor.formatOnSave": true,
+            "editor.tabSize": 2
+          },
+          "[terraform-vars]": {
+            "editor.defaultFormatter": "HashiCorp.terraform",
+            "editor.formatOnSave": true,
+            "editor.tabSize": 2
+          },
+          "files.exclude": {
+            "**/.terraform": true,
+            "**/.terraform.lock.hcl": false
+          }
+        }
       }
     },
-    "postCreateCommand": "uname -a",
+    "postCreateCommand": "terraform version && tflint --version && terraform-docs --version",
     "remoteUser": "vscode"
   }
