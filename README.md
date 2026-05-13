@@ -18,35 +18,108 @@ cd devcontainer-starter
 git switch python    # or main, terraform, ...
 ```
 
-## Setup on Windows (Podman)
+## Setup (Podman + Dev Containers)
 
-You don't need Docker Desktop. [Podman](https://podman.io/) is a free, open-source container engine that works seamlessly with VS Code Dev Containers.
+You don't need Docker Desktop. [Podman](https://podman.io/) is a free, open-source container engine that works seamlessly with VS Code Dev Containers on Windows, macOS, and Linux. Expand the dropdown for your operating system in each step.
 
 ### 1. Install Git
 
-Git is what you'll use to download the project and switch between starter branches. Download the Windows installer and run it:
+Git is what you'll use to download the project and switch between starter branches.
+
+<details>
+<summary><strong>Windows</strong></summary>
+
+Download and run the installer:
 
 https://git-scm.com/download/win
 
-The defaults during install are fine. Once it's done, open a new PowerShell window and confirm it works:
+The defaults during install are fine.
 
-```powershell
+</details>
+
+<details>
+<summary><strong>macOS</strong></summary>
+
+The easiest path is the Xcode Command Line Tools, which include Git. In Terminal:
+
+```bash
+xcode-select --install
+```
+
+Or, if you already use [Homebrew](https://brew.sh/):
+
+```bash
+brew install git
+```
+
+</details>
+
+<details>
+<summary><strong>Linux</strong></summary>
+
+Install Git via your distribution's package manager:
+
+- Debian / Ubuntu: `sudo apt install git`
+- Fedora: `sudo dnf install git`
+- Arch: `sudo pacman -S git`
+
+See https://git-scm.com/download/linux for other distros.
+
+</details>
+
+Open a new terminal and confirm it works:
+
+```bash
 git --version
 ```
 
 ### 2. Install Podman Desktop
 
-Download the Windows installer and run it:
+Podman is the container engine; Podman Desktop is the cross-platform GUI that bundles it.
+
+<details>
+<summary><strong>Windows</strong></summary>
+
+Download and run the installer:
 
 https://podman-desktop.io/downloads
 
-Open Podman Desktop after install. It will walk you through creating a "Podman machine" (a small Linux VM that runs your containers under the hood). The defaults are fine &mdash; just click through.
-
 > Requirements: Windows 10 build 19043+ or Windows 11, plus admin rights to enable WSL 2 or Hyper-V the first time.
+
+</details>
+
+<details>
+<summary><strong>macOS</strong></summary>
+
+Download the Universal `.dmg` (works on Intel and Apple Silicon) and drag Podman Desktop into Applications:
+
+https://podman-desktop.io/downloads/macos
+
+> If you previously installed Podman via Homebrew, uninstall it first to avoid conflicts &mdash; the `.dmg` is the recommended install path.
+
+</details>
+
+<details>
+<summary><strong>Linux</strong></summary>
+
+Flatpak is the recommended install path:
+
+```bash
+flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub io.podman_desktop.PodmanDesktop
+```
+
+Launch it with `flatpak run io.podman_desktop.PodmanDesktop`. AppImage and tar bundles are also available at https://podman-desktop.io/downloads/linux.
+
+If you prefer the CLI only, you can skip Podman Desktop entirely and install plain `podman` via your package manager (`sudo apt install podman`, `sudo dnf install podman`, ...). The Dev Containers extension only needs the `podman` binary on `PATH`.
+
+</details>
+
+Open Podman Desktop after install. It will walk you through creating a "Podman machine" (a small Linux VM that runs your containers under the hood &mdash; required on Windows and macOS, not needed on Linux where containers run natively). The defaults are fine.
 
 ### 3. Install VS Code
 
-If you don't already have it:
+If you don't already have it, download for your platform here:
 
 https://code.visualstudio.com/
 
@@ -56,11 +129,11 @@ Inside VS Code, install **Dev Containers** by Microsoft:
 
 https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 
-(Or open the Extensions panel with `Ctrl+Shift+X` and search for "Dev Containers".)
+(Or open the Extensions panel with `Ctrl+Shift+X` / `Cmd+Shift+X` on macOS and search for "Dev Containers".)
 
 ### 5. Point Dev Containers at Podman
 
-In VS Code, press `Ctrl+,` to open Settings, click the **Open Settings (JSON)** icon in the top-right of that tab, and add these two lines inside the outer `{}`:
+Open VS Code Settings with `Ctrl+,` (Windows / Linux) or `Cmd+,` (macOS), click the **Open Settings (JSON)** icon in the top-right of that tab, and add these two lines inside the outer `{}`:
 
 ```json
 "dev.containers.dockerPath": "podman",
