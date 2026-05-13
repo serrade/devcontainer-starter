@@ -22,7 +22,19 @@ git switch python    # or main, terraform, ...
 
 You don't need Docker Desktop. [Podman](https://podman.io/) is a free, open-source container engine that works seamlessly with VS Code Dev Containers.
 
-### 1. Install Podman Desktop
+### 1. Install Git
+
+Git is what you'll use to download the project and switch between starter branches. Download the Windows installer and run it:
+
+https://git-scm.com/download/win
+
+The defaults during install are fine. Once it's done, open a new PowerShell window and confirm it works:
+
+```powershell
+git --version
+```
+
+### 2. Install Podman Desktop
 
 Download the Windows installer and run it:
 
@@ -32,13 +44,13 @@ Open Podman Desktop after install. It will walk you through creating a "Podman m
 
 > Requirements: Windows 10 build 19043+ or Windows 11, plus admin rights to enable WSL 2 or Hyper-V the first time.
 
-### 2. Install VS Code
+### 3. Install VS Code
 
 If you don't already have it:
 
 https://code.visualstudio.com/
 
-### 3. Install the Dev Containers extension
+### 4. Install the Dev Containers extension
 
 Inside VS Code, install **Dev Containers** by Microsoft:
 
@@ -46,7 +58,7 @@ https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-cont
 
 (Or open the Extensions panel with `Ctrl+Shift+X` and search for "Dev Containers".)
 
-### 4. Point Dev Containers at Podman
+### 5. Point Dev Containers at Podman
 
 In VS Code, press `Ctrl+,` to open Settings, click the **Open Settings (JSON)** icon in the top-right of that tab, and add these two lines inside the outer `{}`:
 
@@ -57,7 +69,7 @@ In VS Code, press `Ctrl+,` to open Settings, click the **Open Settings (JSON)** 
 
 Save the file. VS Code will now use Podman everywhere it would have used Docker.
 
-### 5. Open the project in a container
+### 6. Open the project in a container
 
 1. **File &rarr; Open Folder...** and pick the cloned `devcontainer-starter` folder.
 2. VS Code should show a notification: **"Folder contains a Dev Container configuration file. Reopen folder to develop in a container."** Click **Reopen in Container**.
