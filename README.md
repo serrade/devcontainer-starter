@@ -10,7 +10,7 @@ Each branch is a complete, self-contained starter. Check out the branch you want
 | --- | --- |
 | [`main`](https://github.com/serrade/devcontainer-starter/tree/main) | Generic Ubuntu base container with a custom bash prompt, common CLI tools (`git`, `curl`, `jq`, `htop`, ...) and Fira Code. Use as the starting point for any new variant. |
 | [`python`](https://github.com/serrade/devcontainer-starter/tree/python) | Everything in `main`, plus Python 3, pip, FastAPI / SQLAlchemy, and a PostgreSQL + Redis stack wired up via docker-compose. |
-| [`terraform`](https://github.com/serrade/devcontainer-starter/tree/terraform) | Stub branch &mdash; Terraform tooling coming soon. |
+| [`terraform`](https://github.com/serrade/devcontainer-starter/tree/terraform) | Everything in `main`, plus the [official Terraform Dev Container Feature](https://github.com/devcontainers/features/tree/main/src/terraform) (Terraform CLI, TFLint, terraform-docs), the HashiCorp Terraform VS Code extension, `terraform fmt` on save, and a minimal hello-world `main.tf` sample. |
 
 ```bash
 git clone https://github.com/serrade/devcontainer-starter.git
