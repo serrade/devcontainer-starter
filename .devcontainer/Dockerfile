@@ -3,7 +3,8 @@ FROM --platform=linux/amd64 mcr.microsoft.com/devcontainers/base:ubuntu
 COPY .devcontainer/apt-packages.txt /tmp/apt-packages.txt
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && grep -v '^#' /tmp/apt-packages.txt | grep -v '^$' | xargs apt-get -y install --no-install-recommends \
+    && sed -e 's/\r$//' -e '/^#/d' -e '/^[[:space:]]*$/d' /tmp/apt-packages.txt \
+       | xargs apt-get -y install --no-install-recommends \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
     && rm /tmp/apt-packages.txt
 
