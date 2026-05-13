@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+# Force LF for files consumed by the Linux container build / scripts.
+*.sh           eol=lf
+*.txt          eol=lf
+Dockerfile     eol=lf
+*.dockerfile   eol=lf
+*.tf           eol=lf
+*.tfvars       eol=lf
+
+# Keep Windows-native scripts as CRLF
+*.bat          eol=crlf
+*.cmd          eol=crlf
+*.ps1          eol=crlf
