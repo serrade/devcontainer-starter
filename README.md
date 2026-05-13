@@ -156,11 +156,6 @@ Neither of these is required to use this starter, but they're nice if you want a
 - [**Container Tools**](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-containers) (Microsoft) &mdash; evolved from the Docker extension, supports Podman, Containerfile / Dockerfile syntax highlighting, image building.
 - [**Pod Manager**](https://marketplace.visualstudio.com/items?itemName=dreamcatcher45.podmanager) (community) &mdash; GUI for managing Podman containers, images, volumes, networks, and compose stacks.
 
-## Contributing a new starter
+## Contributing
 
-1. Branch off `main`: `git switch main && git switch -c <language>`.
-2. Add the language-specific bits to `.devcontainer/` and any sample files at the repo root.
-3. Push the branch: `git push -u origin <language>`.
-4. Update the branch table in this README (on `main`) so the new starter is discoverable.
-
-Generic improvements (new shell alias, new base tool, doc updates) go on `main` first and then propagate forward into each variant branch.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a new starter and how to keep variant branches in sync with `main`.
